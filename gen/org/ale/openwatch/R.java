@@ -11,12 +11,12 @@ public final class R {
     public static final class array {
         public static final int about_artists=0x7f070003;
         public static final int about_authors=0x7f070000;
-        /**  Add your name here if you helped out 
- <item></item> 
+        /**  Add your name here if you helped out
+ <item></item>
          */
         public static final int about_documenters=0x7f070001;
-        /**  Add your name here if you helped out, but only in the arrays.xml for the localization that you helped to translate into! 
- <item></item>  
+        /**  Add your name here if you helped out, but only in the arrays.xml for the localization that you helped to translate into!
+ <item></item>
          */
         public static final int about_translators=0x7f070002;
     }
@@ -125,17 +125,17 @@ public final class R {
         public static final int license_short=0x7f050000;
     }
     public static final class string {
-        /**  About 
- About 
- About 
- About 
- About 
+        /**  About
+ About
+ About
+ About
+ About
          */
         public static final int about=0x7f060025;
         public static final int about_comments=0x7f060034;
         /**  ***************************
              About information
-             *************************** 
+             ***************************
          */
         public static final int about_copyright=0x7f06005c;
         public static final int about_email=0x7f06005e;
@@ -144,7 +144,7 @@ public final class R {
         public static final int about_website_label=0x7f060035;
         public static final int about_website_url=0x7f06005d;
         public static final int aboutapp_get=0x7f06005b;
-        /**  About 
+        /**  About
          */
         public static final int aboutapp_market_uri=0x7f060061;
         public static final int aboutapp_not_available=0x7f06005a;
@@ -153,7 +153,7 @@ public final class R {
         public static final int application_not_available=0x7f060051;
         /**  ***************************
              Preferences
-             *************************** 
+             ***************************
          */
         public static final int configure=0x7f060062;
         public static final int copied_file_name=0x7f060046;
@@ -176,24 +176,24 @@ public final class R {
         public static final int eula_refuse=0x7f060054;
         /**  ***************************
              Distribution
-             *************************** 
- EULA 
+             ***************************
+ EULA
  ***************************
              Distribution
-             *************************** 
- EULA 
+             ***************************
+ EULA
  ***************************
              Distribution
-             *************************** 
- EULA 
+             ***************************
+ EULA
  ***************************
              Distribution
-             *************************** 
- EULA 
+             ***************************
+ EULA
  ***************************
              Distribution
-             *************************** 
- EULA 
+             ***************************
+ EULA
          */
         public static final int eula_title=0x7f060052;
         public static final int faq=0x7f060024;
@@ -249,15 +249,15 @@ public final class R {
         public static final int update=0x7f060059;
         /**  ***************************
              Distribution
-             *************************** 
- Update 
+             ***************************
+ Update
          */
         public static final int update_app_url=0x7f06005f;
-        /**  Update 
- Update 
- Update 
- Update 
- Update 
+        /**  Update
+ Update
+ Update
+ Update
+ Update
          */
         public static final int update_box_text=0x7f060055;
         public static final int update_check_now=0x7f060056;

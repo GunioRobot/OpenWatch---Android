@@ -177,7 +177,7 @@ public class ClientHttpRequest {
         out.flush();
       }
     }
-    
+
     buf = null;
   }
 

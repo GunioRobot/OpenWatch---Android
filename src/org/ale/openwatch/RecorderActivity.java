@@ -30,7 +30,7 @@ import android.widget.Toast;
 
 public class RecorderActivity extends Activity {
     /** Called when the activity is first created. */
-    
+
     public boolean hidden = false;
     final Handler mHandler = new Handler();
     public VideoRecorder vr;
@@ -39,40 +39,40 @@ public class RecorderActivity extends Activity {
     private MainActivityGroup mag;
     private Activity mainer;
     Context co;
-    
+
     boolean recording = false;
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.playa);
-        
+
         vr = (VideoRecorder) findViewById(R.id.camcorder_preview);
         iv = (ImageView) findViewById(R.id.hider);
         co = this;
 
     }
-    
+
     public void reset() {
         vr.setPath("/recordings/" + System.currentTimeMillis() + ".mp4");
         vr.recorder.reset();
     }
-    
+
     public String getPath() {
         return vr.getPath();
     }
-    
+
     public void onResume() {
         super.onResume();
     }
-       
-    
+
+
     public void start() {
             vr.setVisibility(View.VISIBLE);
             iv.setVisibility(View.VISIBLE);
             hidden = true;
-            
+
             final VideoRecorder vvv = vr;
             vr.setPath("/recordings/" + System.currentTimeMillis() + ".mp4");
             mHandler.post(new Runnable() {
@@ -85,12 +85,12 @@ public class RecorderActivity extends Activity {
                         e.printStackTrace();
                     }
                 }});
-            
+
     }
-    
+
     public void stop() {
-            
-            
+
+
             final VideoRecorder vvv = vr;
             mHandler.post(new Runnable() {
 
@@ -106,24 +106,24 @@ public class RecorderActivity extends Activity {
                     }
 
                 }});
-           
+
     }
-    
+
     public void setParentGroup(MainActivityGroup magg) {
         mag = magg;
     }
-    
+
     public void setMainActivity(Activity magg) {
         mainer = magg;
         fl = (FrameLayout) mainer.findViewById(R.id.Recorder);
     }
-    
+
     public void setFL(FrameLayout magg) {
         fl = magg;
     }
-    
+
     public boolean isVideoRecording() {
         return recording;
     }
-    
+
 }

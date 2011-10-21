@@ -33,13 +33,13 @@ public class VideoRecorder extends SurfaceView implements SurfaceHolder.Callback
   public VideoRecorder(Context con, AttributeSet attrs) {
       super(con, attrs);
       c = con;
-      
+
       holder = getHolder();
       holder.addCallback(this);
       holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
   }
-  
+
   public void setPath(String patha) {
       try {
           path = sanitizePath(patha);
@@ -47,7 +47,7 @@ public class VideoRecorder extends SurfaceView implements SurfaceHolder.Callback
           f.delete();
           f.createNewFile();
           FileOutputStream fOut = new FileOutputStream(f);
-          OutputStreamWriter osw = new OutputStreamWriter(fOut); 
+          OutputStreamWriter osw = new OutputStreamWriter(fOut);
           osw.write(path);
           osw.flush();
           osw.close();
@@ -116,11 +116,11 @@ public class VideoRecorder extends SurfaceView implements SurfaceHolder.Callback
     catch(Exception e) {
     }
   }
-  
+
   public String getPath() {
       return path;
   }
-  
+
 public void surfaceChanged(SurfaceHolder sholder, int format, int width,
         int height) {
     // TODO Auto-generated method stub
@@ -128,12 +128,12 @@ public void surfaceChanged(SurfaceHolder sholder, int format, int width,
 
 public void surfaceCreated(SurfaceHolder holder) {
     // TODO Auto-generated method stub
-    
+
 }
 
 public void surfaceDestroyed(SurfaceHolder holder) {
     // TODO Auto-generated method stub
-    
+
 }
 
 }

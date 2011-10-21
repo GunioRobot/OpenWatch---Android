@@ -25,7 +25,7 @@ import java.lang.reflect.Method;
 import org.ale.openwatch.recordService;
 
 public class rService extends Service{
-    
+
     static final String ACTION_FOREGROUND = "com.example.android.apis.FOREGROUND";
     static final String ACTION_BACKGROUND = "com.example.android.apis.BACKGROUND";
 
@@ -39,21 +39,21 @@ public class rService extends Service{
     private Method mStopForeground;
     private Object[] mStartForegroundArgs = new Object[2];
     private Object[] mStopForegroundArgs = new Object[1];
-    
+
     public String foreground_service_started = "1";
 
-	
+
 	audioRecorder recorder = new audioRecorder("/recordings/" + System.currentTimeMillis() + ".3gp");
 	private boolean running=false;
-	
+
 	@Override
 	public IBinder onBind(Intent intent) {
 		return m_binder;
 	}
-	
+
 	final Context c = this;
 	final rService rs = this;
-	
+
 	private final recordService.Stub m_binder = new recordService.Stub(){
 
 		public void start() throws RemoteException {
@@ -65,9 +65,9 @@ public class rService extends Service{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
-		
+
 		public void stop() throws RemoteException {
 			try {
 				stopRecording();
@@ -76,29 +76,29 @@ public class rService extends Service{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
 
 		public boolean running() throws RemoteException {
 			return running;
 		}
-		
+
 	};
-	
+
 	public void startRecording() throws IOException{
 		recorder.start();
 	}
-	
+
 	public void stopRecording() throws IOException{
 		recorder.stop();
 	}
-	
+
 	@Override
-	public void onStart(Intent intent, int startId) {	
+	public void onStart(Intent intent, int startId) {
 		super.onStart(intent, startId);
 		handleCommand(intent);
 		}
-	
+
     @Override
     public void onDestroy() {
         // Make sure our notification is gone.
@@ -114,11 +114,11 @@ public class rService extends Service{
     }
 
     void handleCommand(Intent intent) {
-        
+
         if(intent == null) {
             return;
         }
-        
+
         if (ACTION_FOREGROUND.equals(intent.getAction())) {
             // In this sample, we'll use the same text for the ticker and the expanded notification
             CharSequence text = foreground_service_started;
@@ -141,7 +141,7 @@ public class rService extends Service{
             stopForegroundCompat(1);
         }
     }
-    
+
     /**
      * This is a wrapper around the new startForeground method, using the older
      * APIs if it is not available.

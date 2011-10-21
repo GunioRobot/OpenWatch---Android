@@ -25,7 +25,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
     /** Called when the activity is first created. */
-    
+
     public boolean recording = false;
     final Handler mHandler = new Handler();
     private boolean m_servicedBind = false;
@@ -33,27 +33,27 @@ public class MainActivity extends Activity {
     private RecorderActivity ra;
     private MainActivityGroup mag;
     private LinearLayout root;
-    
+
     Context c;
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
-        
+
         vr = (VideoRecorder) findViewById(R.id.camcorder_preview);
         c = this;
-        
+
     }
-    
+
     public void activateButton() {
         final Button ib = (Button) findViewById(R.id.ib);
         ib.setClickable(true);
         ib.setBackgroundResource(R.drawable.button);
         recording = false;
     }
-    
+
     public void onResume() {
         super.onResume();
         final Button ib = (Button) findViewById(R.id.ib);
@@ -61,29 +61,29 @@ public class MainActivity extends Activity {
         final Context c = this;
 
         final MainActivity ma = this;
-        
+
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         final SharedPreferences.Editor editor;
         editor = prefs.edit();
-        
+
         final OnTouchListener realOTL = new OnTouchListener() {
 
             public boolean onTouch(View v, MotionEvent event) {
-                
 
-                
+
+
                 if(event.getAction() != MotionEvent.ACTION_DOWN) {
                     return false;
                 }
-                
+
                 if(ra.hidden) {
                     return false;
                 }
-                
+
                     if(recording){
                     return true;
                 }
-                   
+
                     else {
                         mHandler.postDelayed(new Runnable() {
 
@@ -98,11 +98,11 @@ public class MainActivity extends Activity {
                         }
             }
         };
-        
+
         final OnTouchListener fakeOTL = new OnTouchListener() {
 
             public boolean onTouch(View v, MotionEvent event) {
-                
+
                 if(event.getAction() != MotionEvent.ACTION_DOWN) {
                     return false;
                 }
@@ -110,21 +110,21 @@ public class MainActivity extends Activity {
                     new AlertDialog.Builder(c)
                     .setMessage("When you hit Record Video, the screen will go BLACK. It IS recording when the screen is black! To finish recording and upload, press the BACK button 3 times. Pressing HOME will also stop the recording. ")
                     .setPositiveButton("Okay!", new OnClickListener() {
-        
+
                         public void onClick(DialogInterface dialog, int which) {
                             ib.setOnTouchListener(realOTL);
-                            
+
                         }})
                     .setTitle("IMPORTANT!!!")
                     .show();
-                    
+
                     editor.putString("warned", "shitballs");
                     editor.commit();
 
                 return true;
             }
         };
-        
+
         String first = prefs.getString("warned", "fuck");
         if(first.contains("fuck")){
             ib.setOnTouchListener(fakeOTL);
@@ -132,16 +132,16 @@ public class MainActivity extends Activity {
         else{
             ib.setOnTouchListener(realOTL);
         }
-        
+
        if(recording) {
            ib.setBackgroundResource(R.drawable.buttonpressed);
        }
-       
+
        final Button b = (Button) findViewById(R.id.aib);
        boolean running = prefs.getBoolean("running", false);
-       
+
        if(running){
-           
+
            final Runnable stopper = new Runnable() {
                public void run(){
                    if(mag.r_service==null){
@@ -167,7 +167,7 @@ public class MainActivity extends Activity {
                                        mHandler.post(new Runnable() {
 
                                            public void run() {
-                                               Intent mainIntent = new Intent(c, DescribeActivity.class); 
+                                               Intent mainIntent = new Intent(c, DescribeActivity.class);
                                                startActivity(mainIntent);
                                            }});
 
@@ -186,19 +186,19 @@ public class MainActivity extends Activity {
                    }
                }
            };
-           
+
            mHandler.postDelayed(stopper,100);
-           
+
        }
-       
+
        b.setOnTouchListener(new OnTouchListener() {
 
            public boolean onTouch(View v, MotionEvent event) {
-               
+
                if(event.getAction() != MotionEvent.ACTION_DOWN) {
                    return false;
                }
-               
+
                    mHandler.postDelayed(new Runnable() {
 
                        public void run() {
@@ -211,7 +211,7 @@ public class MainActivity extends Activity {
                    }, 400);
                b.setPressed(false);
                b.setClickable(false);
-                   
+
                editor.putBoolean("running", true);
                editor.commit();
                Toast.makeText(c, "Recording started!", Toast.LENGTH_SHORT).show();
@@ -219,9 +219,9 @@ public class MainActivity extends Activity {
                finish();
                return true;
                        }
-           
+
        });
-       
+
        ImageView tag = (ImageView)findViewById(R.id.tag);
        int rand = new Random().nextInt(10);
        switch(rand){
@@ -255,10 +255,10 @@ public class MainActivity extends Activity {
        case 9:
            tag.setImageResource(R.drawable.tag10);
            return;
-       
+
        }
    }
-   
+
 
     public void setRecorderActivity(RecorderActivity raa) {
         ra = raa;
@@ -267,9 +267,9 @@ public class MainActivity extends Activity {
     public void setParentGroup(MainActivityGroup magg) {
         mag = magg;
     }
-    
+
     public FrameLayout getFL() {
         return (FrameLayout)findViewById(R.id.Recorder);
     }
-    
+
 }

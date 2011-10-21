@@ -383,15 +383,15 @@ public class MainActivityGroup extends ActivityGroup {
 		intent.setClass(MainActivityGroup.this, rService.class);
 		startService(intent);
 		bindRecordService();
-		
-		// if activityGroup was started by widget, start the recorder immediately 
+
+		// if activityGroup was started by widget, start the recorder immediately
         Bundle extras = getIntent().getExtras();
 		if(extras != null){
 			if(extras.getBoolean(ClientAppWidgetProvider.KEY_AUTOREC)){
 				if(!raActivity.hidden && !maActivity.recording){
 			        final Button ib = (Button) maActivity.findViewById(R.id.ib);
 	                mHandler.postDelayed(new Runnable() {
-	
+
 	                    public void run() {
 	                        maActivity.recording = true;
 	                        ib.setClickable(false);
@@ -446,10 +446,10 @@ public class MainActivityGroup extends ActivityGroup {
 
 	public void configure_it(String upload_url) {
 		// leave protocol string off of the URL, we will add those later
-		SharedPreferences owSettings = getSharedPreferences("owPreferences", MODE_PRIVATE);  
+		SharedPreferences owSettings = getSharedPreferences("owPreferences", MODE_PRIVATE);
 		SharedPreferences.Editor prefEditor = owSettings.edit();
 		prefEditor.putString("uploadURL", upload_url);
-		prefEditor.commit(); 
+		prefEditor.commit();
 	}
 
 	public ArrayList<String> getRecordingList() {
